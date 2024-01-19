@@ -1,11 +1,12 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Hello there</title>
 </head>
 <body>
 <h3>Lets create a product:</h3>
-<form method="post" th:action="@{/products/create}" th:object="${product}">
+<form method="post" th:object="${product}">
 
     <label>Name:</label>
     <input type="text" placeholder="product name" th:field="*{name}"><br/>
