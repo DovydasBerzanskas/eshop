@@ -33,7 +33,7 @@ public class ProductDataMockConfig {
                     .build());
                 count++;
             };
-                log.atDebug().log("-=== initProducts initialization start ===-");
-                return null;
+            log.atDebug().log("-=== initProducts initialization start ===-");
+            return null;
         }
     }
