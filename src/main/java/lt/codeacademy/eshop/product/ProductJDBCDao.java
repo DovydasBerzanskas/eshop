@@ -1,6 +1,7 @@
 package lt.codeacademy.eshop.product;
 
 import lombok.RequiredArgsConstructor;
+import lt.codeacademy.eshop.mapper.ProductMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +14,7 @@ import java.util.UUID;
 public class ProductJDBCDao implements ProductDao{
 
     private final JdbcTemplate jdbcTemplate;
+    private final ProductMapper productMapper;
 
     @Override
     public void save (Product product) {
@@ -30,24 +32,13 @@ public class ProductJDBCDao implements ProductDao{
     @Override
     public List<Product> getAll() {
         return jdbcTemplate.query(
-                "SELECT * FROM PRODUCT", (rs, rowNum) -> Product.builder()
-                        .productId(UUID.fromString(rs.getString("product_id")))
-                        .name(rs.getString("name"))
-                        .price(rs.getDouble("price"))
-                        .amount(rs.getInt("amount"))
-                        .build());
+                "SELECT * FROM PRODUCT", productMapper);
     }
 
     @Override
     public Product getProductByUUID(UUID id) {
         final List<Product> products = jdbcTemplate.query(
-            String.format("SELECT * FROM PRODUCT WHERE product_id = '%s'", id.toString()),
-                (rs, rowNum) -> Product.builder()
-                        .productId(UUID.fromString(rs.getString("product_id")))
-                        .name(rs.getString("name"))
-                        .price(rs.getDouble("price"))
-                        .amount(rs.getInt("amount"))
-                        .build());
+            String.format("SELECT * FROM PRODUCT WHERE product_id = '%s'", id.toString()), productMapper);
         return products.get(0);
     }
 
