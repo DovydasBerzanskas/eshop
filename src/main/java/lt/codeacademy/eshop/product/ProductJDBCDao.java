@@ -1,11 +1,10 @@
 package lt.codeacademy.eshop.product;
 
 import lombok.RequiredArgsConstructor;
-import lt.codeacademy.eshop.mapper.ProductMapper;
+import lt.codeacademy.eshop.product.mapper.ProductJDBCRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,7 +13,7 @@ import java.util.UUID;
 public class ProductJDBCDao implements ProductDao{
 
     private final JdbcTemplate jdbcTemplate;
-    private final ProductMapper productMapper;
+    private final ProductJDBCRowMapper productJDBCRowMapper;
 
     @Override
     public void save (Product product) {
@@ -32,13 +31,13 @@ public class ProductJDBCDao implements ProductDao{
     @Override
     public List<Product> getAll() {
         return jdbcTemplate.query(
-                "SELECT * FROM PRODUCT", productMapper);
+                "SELECT * FROM PRODUCT", productJDBCRowMapper);
     }
 
     @Override
     public Product getProductByUUID(UUID id) {
         final List<Product> products = jdbcTemplate.query(
-            String.format("SELECT * FROM PRODUCT WHERE product_id = '%s'", id.toString()), productMapper);
+            String.format("SELECT * FROM PRODUCT WHERE product_id = '%s'", id.toString()), productJDBCRowMapper);
         return products.get(0);
     }
 

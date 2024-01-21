@@ -1,7 +1,6 @@
-package lt.codeacademy.eshop.mapper;
+package lt.codeacademy.eshop.product.mapper;
 
 import lt.codeacademy.eshop.product.Product;
-import lt.codeacademy.eshop.product.ProductService;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +9,7 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 @Component
-public class ProductMapper implements RowMapper<Product> {
+public class ProductJDBCRowMapper implements RowMapper<Product> {
 
     @Override
     public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
