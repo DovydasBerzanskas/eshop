@@ -1,9 +1,9 @@
-package lt.codeacademy.eshop.product;
+package lt.codeacademy.eshop.product.controllers;
 
 import lombok.extern.log4j.Log4j2;
 import lt.codeacademy.eshop.HttpEndpoints;
 import lt.codeacademy.eshop.product.Product;
-import lt.codeacademy.eshop.product.ProductService;
+import lt.codeacademy.eshop.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,9 +1,13 @@
 package lt.codeacademy.eshop.product;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
 
 import java.util.UUID;
 
+import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,7 +21,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Entity
 public class Product {
+
+    @Id()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private UUID productId;
     private String name;
     private double price;
