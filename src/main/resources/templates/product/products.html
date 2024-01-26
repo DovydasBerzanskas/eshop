@@ -13,11 +13,12 @@
 
     <span th:text="'Viso irasu: ' + ${productList.totalElements}">Total elements</span>
     <br/> <span th:text="'Viso puslapiu: ' + ${productList.totalPages}">Total pages</span>
+
     <table class="table table-hover table-dark">
         <thead>
             <tr>
                 <th>
-                    <a th:with="directionVariable=${ProductList.sort.getOrderFor('name')?.direction}"
+                    <a th:with="directionVariable=${productList.sort.getOrderFor('name')?.direction}"
                         th:href="@{/products(sort='name,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
                         <i th:class="'fa-solid ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
                         th:if="${productList.sort.getOrderFor('name') ne null}"></i>
@@ -25,7 +26,7 @@
                     </a>
                 </th>
                 <th>
-                    <a th:with="directionVariable=${ProductList.sort.getOrderFor('price')?.direction}"
+                    <a th:with="directionVariable=${productList.sort.getOrderFor('price')?.direction}"
                        th:href="@{/products(sort='price,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
                         <i th:class="'fa-solid ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
                            th:if="${productList.sort.getOrderFor('price') ne null}"></i>
@@ -33,7 +34,7 @@
                     </a>
                 </th>
                 <th>
-                    <a th:with="directionVariable=${ProductList.sort.getOrderFor('amount')?.direction}"
+                    <a th:with="directionVariable=${productList.sort.getOrderFor('amount')?.direction}"
                        th:href="@{/products(sort='amount,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
                         <i th:class="'fa-solid ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
                            th:if="${productList.sort.getOrderFor('amount') ne null}"></i>
