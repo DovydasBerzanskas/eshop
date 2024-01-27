@@ -49,7 +49,7 @@ public class ProductController {
         productService.saveProduct(product);
         model.addAttribute("message", "Product added successfully!");
 
-        return "product/product";
+        return "redirect:/products/create?message=Product added successfully!";
         }
 
     @PostMapping(HttpEndpoints.PRODUCTS_UPDATE)
@@ -60,7 +60,7 @@ public class ProductController {
     }
 
     @GetMapping(HttpEndpoints.PRODUCTS)
-    public String getProducts(Model model, @PageableDefault(size = 15, sort = {"price"}, direction = Sort.Direction.ASC)
+    public String getProducts(Model model, @PageableDefault(size = 5, sort = {"price"}, direction = Sort.Direction.ASC)
     Pageable pageable) {
         final Page<ProductDto> allProducts = productService.getAllProductsPage(pageable);
         model.addAttribute("productList", allProducts);
