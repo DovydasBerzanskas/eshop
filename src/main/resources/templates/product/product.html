@@ -2,26 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hello there</title>
+    <title th:text="#{product.create.title}">Hello there</title>
 </head>
 <body>
-<h3>Lets create a product:</h3>
+<h3 th:text="#{product.create.title}">Lets create a product:</h3>
 <div class="alert alert-success" role="alert"
      th:text="${param.message}">
     Success message when adding product
 </div>
 <form method="post" th:object="${product}">
 
-    <label>Name:</label>
+    <label th:text="#{product.create.name} + ':'">Name:</label>
     <input type="text" placeholder="product name" th:field="*{name}"><br/>
 
-    <label>Price:</label>
+    <label th:text="#{product.create.price} + ':'">Price:</label>
     <input type="text" placeholder="product price" th:field="*{price}"><br/>
 
-    <label>Amount:</label>
+    <label th:text="#{product.create.amount} + ':'">Amount:</label>
     <input type="text" placeholder="product amount" th:field="*{amount}"><br/>
 
-    <button type="submit">LETS DO THIS</button>
+    <button type="submit" th:text="#{product.create.action}">SMASH THAT BUTTON TO SAVE</button>
 </form>
 </body>
 </html>
