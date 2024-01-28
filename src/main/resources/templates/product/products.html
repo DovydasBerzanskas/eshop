@@ -19,7 +19,7 @@
             <tr>
                 <th class="col-md-5">
                     <a th:with="directionVariable=${productList.sort.getOrderFor('name')?.direction}"
-                        th:href="@{/products(sort='name,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
+                        th:href="@{/products(page=${productList.getPageable().getPageNumber()},sort='name,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
                         <i th:class="'fa-solid ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
                         th:if="${productList.sort.getOrderFor('name') ne null}"></i>
                         <span th:text="#{products.field.name}">Name</span>
@@ -27,7 +27,7 @@
                 </th>
                 <th class="col-md-2">
                     <a th:with="directionVariable=${productList.sort.getOrderFor('price')?.direction}"
-                       th:href="@{/products(sort='price,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
+                       th:href="@{/products(page=${productList.getPageable().getPageNumber()},sort='price,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
                         <i th:class="'fa-solid ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
                            th:if="${productList.sort.getOrderFor('price') ne null}"></i>
                         <span th:text="#{products.field.price}">Price</span>
@@ -35,7 +35,7 @@
                 </th>
                 <th class="col-md-2">
                     <a th:with="directionVariable=${productList.sort.getOrderFor('amount')?.direction}"
-                       th:href="@{/products(sort='amount,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
+                       th:href="@{/products(page=${productList.getPageable().getPageNumber()},sort='amount,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
                         <i th:class="'fa-solid ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
                            th:if="${productList.sort.getOrderFor('amount') ne null}"></i>
                         <span th:text="#{products.field.amount}">Amount</span>
@@ -58,12 +58,16 @@
     </table>
 
     <nav class="d-flex justify-content-end" aria-label="Page navigation">
-        <ul class="pagination">
+        <ul class="pagination"
+            th:with="
+                orderVariable=${productList.sort.iterator().hasNext() ? productList.sort.iterator().next() : null},
+                sortVariable=${orderVariable?.property + ',' + orderVariable?.direction + ',ignorecase'}"
+        >
             <li
                 class="page-item"
                 th:classappend="${!productList.hasPrevious() ? 'disabled' : ''}"
             >
-                <a class="page-link" th:href="@{/products(page=${productList.number} - 1)}"
+                <a class="page-link" th:href="@{/products(page=${productList.number} - 1,sort=${sortVariable})}"
                 th:text="#{products.previous}">Previous</a>
             </li>
 
@@ -71,13 +75,13 @@
                 th:each="pageNumber: ${#numbers.sequence(0, productList.totalPages - 1)}"
             th:classappend="${pageNumber == productList.number ? 'active' : ''}"
             >
-                <a class="page-link" th:href="@{/products(page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
+                <a class="page-link" th:href="@{/products(page=${pageNumber},sort=${sortVariable})}" th:text="${pageNumber + 1}"></a>
             </li>
             <li
                 class="page-item"
                 th:classappend="${!productList.hasNext() ? 'disabled' : ''}"
             >
-                <a class="page-link" th:href="@{/products(page=${productList.number} + 1)}"
+                <a class="page-link" th:href="@{/products(page=${productList.number} + 1,sort=${sortVariable})}"
                 th:text="#{products.next}">Next</a>
             </li>
         </ul>
