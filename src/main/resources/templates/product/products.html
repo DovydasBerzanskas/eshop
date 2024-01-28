@@ -17,7 +17,7 @@
     <table class="table table-hover table-dark">
         <thead>
             <tr>
-                <th>
+                <th class="col-md-5">
                     <a th:with="directionVariable=${productList.sort.getOrderFor('name')?.direction}"
                         th:href="@{/products(sort='name,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
                         <i th:class="'fa-solid ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
@@ -25,7 +25,7 @@
                         <span th:text="#{products.field.name}">Name</span>
                     </a>
                 </th>
-                <th>
+                <th class="col-md-2">
                     <a th:with="directionVariable=${productList.sort.getOrderFor('price')?.direction}"
                        th:href="@{/products(sort='price,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
                         <i th:class="'fa-solid ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
@@ -33,7 +33,7 @@
                         <span th:text="#{products.field.price}">Price</span>
                     </a>
                 </th>
-                <th>
+                <th class="col-md-2">
                     <a th:with="directionVariable=${productList.sort.getOrderFor('amount')?.direction}"
                        th:href="@{/products(sort='amount,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
                         <i th:class="'fa-solid ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
@@ -51,7 +51,8 @@
                 <td th:text="${product.amount}">a</td>
                 <td><a
                     th:href="@{/products/{productId}/delete(productId=${product.productId})}"
-                    th:text="#{products.delete}">Delete</a></td>
+                    th:text="#{products.delete}"
+                    class="btn btn-danger">Delete</a></td>
             </tr>
         </tbody>
     </table>
