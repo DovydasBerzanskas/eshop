@@ -1,5 +1,6 @@
 package lt.codeacademy.eshop.product.controllers;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import lt.codeacademy.eshop.HttpEndpoints;
@@ -30,7 +31,7 @@ public class ProductController {
     @GetMapping(HttpEndpoints.PRODUCTS_CREATE)
     public String getFormForCreate(Model model, String message) {
         log.atInfo().log("-=== GET PRODUCT ON CREATE ===-");
-        model.addAttribute("product", Product.builder().build());
+        model.addAttribute("product", ProductDto.builder().build());
         model.addAttribute("message", messageService.getTranslatedMessage(message));
 
         return "product/product";
@@ -45,9 +46,8 @@ public class ProductController {
     }
 
     @PostMapping("/products/create")
-        public String createAProduct(Model model, Product product) {
+        public String createAProduct(Model model, @Valid ProductDto product) {
         productService.saveProduct(product);
-        model.addAttribute("message", "Product added successfully!");
 
         return "redirect:/products/create?message=product.create.message.success";
         }
