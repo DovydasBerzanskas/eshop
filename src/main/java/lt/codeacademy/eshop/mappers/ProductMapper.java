@@ -4,6 +4,8 @@ import lt.codeacademy.eshop.product.pojo.Product;
 import lt.codeacademy.eshop.product.dto.ProductDto;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
+
 @Component
 public class ProductMapper {
 
@@ -22,6 +24,7 @@ public class ProductMapper {
                 .price(productDto.getPrice())
                 .name(productDto.getName())
                 .amount(productDto.getAmount())
+                .productCategories(new HashSet<>())
                 .build();
     }
 }
