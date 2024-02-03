@@ -32,6 +32,6 @@ public class Product {
     private BigDecimal price;
     private int amount;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private Set<ProductCategory> productCategories = new HashSet<>();
 }
