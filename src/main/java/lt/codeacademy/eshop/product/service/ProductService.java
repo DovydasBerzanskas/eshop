@@ -4,6 +4,7 @@ import lt.codeacademy.eshop.mappers.ProductMapper;
 import lt.codeacademy.eshop.product.Product;
 import lt.codeacademy.eshop.product.dao.ProductDao;
 import lt.codeacademy.eshop.product.dto.ProductDto;
+import lt.codeacademy.eshop.product.exception.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -39,7 +40,9 @@ public class ProductService {
     }
 
     public ProductDto getProductByUUID(UUID id) {
-        return mapper.toProductDto(productDao.getProductByUUID(id));
+        return productDao.getProductByUUID(id)
+                .map(productPojo -> mapper.toProductDto(productPojo))
+                .orElseThrow(() -> new ProductNotFoundException());
     }
 
     public void deleteProductByUUID(UUID id) {
