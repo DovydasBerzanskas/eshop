@@ -1,4 +1,4 @@
-package lt.codeacademy.eshop.product;
+package lt.codeacademy.eshop.product.pojo;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
