@@ -13,7 +13,7 @@
         <table class="table table-hover table-dark">
             <thead>
             <tr>
-                <th class="col-md-5">
+                <th class="col-md-auto">
                     <a th:with="directionVariable=${productList.sort.getOrderFor('name')?.direction}"
                        th:href="@{/products(page=${productList.getPageable().getPageNumber()},sort='name,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
                         <i th:class="'fa-solid ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
@@ -37,7 +37,7 @@
                         <span th:text="#{products.field.amount}">Amount</span>
                     </a>
                 </th>
-                <th></th>     <!-- empty row for buttons (edit, delete...) -->
+                <th class="col-md-2"></th>     <!-- empty row for buttons (edit, delete...) -->
             </tr>
             </thead>
             <tbody>
@@ -46,14 +46,16 @@
                        th:text="${product.name}"></a></td>
                 <td th:text="${product.price}">a</td>
                 <td th:text="${product.amount}">a</td>
-                <td>
-                    <button class="btn btn-primary">
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </button>
+                <td class="d-flex gap-2">
+                    <form method="POST" th:action="@{/cart/{productId}(productId=${product.productId})}">
+                        <button class="btn btn-primary">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </form>
                     <a
-                        th:href="@{/products/{productId}/delete(productId=${product.productId})}"
-                        th:text="#{products.delete}"
-                        class="btn btn-danger">Delete</a></td>
+                            th:href="@{/products/{productId}/delete(productId=${product.productId})}"
+                            th:text="#{products.delete}"
+                            class="btn btn-danger">Delete</a></td>
             </tr>
             </tbody>
         </table>
