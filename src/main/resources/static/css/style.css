@@ -1,9 +1,11 @@
+body {
+    background-color: #434453;
+    color: white;
+    min-height: 100vh;
+    font-size: calc(6px + 2vmin);
+}
+
 .form-error {
     color: red;
 }
 
-.stealth-selector {
-    border: none;
-    background: none;
-    color: rgba(0,0,0,.55);
-}
