@@ -25,9 +25,4 @@ public class ApplicationControllerAdvice {
         StringTrimmerEditor trimmerEditor = new StringTrimmerEditor(true);
         webDataBinder.registerCustomEditor(String.class, trimmerEditor);
     }
-
-    @ModelAttribute("modelDateAttr")
-    public Date now() {
-        return new Date();
-    }
 }

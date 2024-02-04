@@ -16,7 +16,7 @@
                 <th class="col-md-auto">
                     <a th:with="directionVariable=${productList.sort.getOrderFor('name')?.direction}"
                        th:href="@{/products(page=${productList.getPageable().getPageNumber()},sort='name,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
-                        <i th:class="'fa-solid ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
+                        <i th:class="'fa ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
                            th:if="${productList.sort.getOrderFor('name') ne null}"></i>
                         <span th:text="#{products.field.name}">Name</span>
                     </a>
@@ -24,15 +24,15 @@
                 <th class="col-md-2">
                     <a th:with="directionVariable=${productList.sort.getOrderFor('price')?.direction}"
                        th:href="@{/products(page=${productList.getPageable().getPageNumber()},sort='price,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
-                        <i th:class="'fa-solid ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
+                        <i th:class="'fa ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
                            th:if="${productList.sort.getOrderFor('price') ne null}"></i>
-                        <span th:text="#{products.field.price}">Price</span>
+                        <span th:text="#{products.field.price} + ' (' + ${modelCurrencyAttr} + ')'">Price</span>
                     </a>
                 </th>
                 <th class="col-md-2">
                     <a th:with="directionVariable=${productList.sort.getOrderFor('amount')?.direction}"
                        th:href="@{/products(page=${productList.getPageable().getPageNumber()},sort='amount,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
-                        <i th:class="'fa-solid ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
+                        <i th:class="'fa ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
                            th:if="${productList.sort.getOrderFor('amount') ne null}"></i>
                         <span th:text="#{products.field.amount}">Amount</span>
                     </a>
