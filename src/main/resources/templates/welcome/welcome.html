@@ -3,8 +3,11 @@
       lang="en">
 <head th:replace="fragments/layout :: head"></head>
 <body>
+<main>
 <h1 th:text="#{home.title}">Welcome to the E-Shop</h1>
 <h2 th:text="${hello.world}"></h2>
 <h3 th:text="'Today date is: ' + ${modelDateAttr}"></h3>
+</main>
+<footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
 </body>
 </html>

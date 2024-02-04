@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/layout :: head"></head>
+<head th:replace="~{fragments/layout :: head}"></head>
 <body>
-<div class="container">
+<main class="container">
     <h2 th:text="#{cart.title}">My Cart</h2>
 
     <table class="table table-striped">
@@ -12,6 +12,7 @@
             <th scope="col">Unit Price</th>
             <th scope="col">Quantity</th>
             <th scope="col">Total Price</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -26,6 +27,7 @@
     </table>
 
     <button class="btn btn-primary" type="submit" th:text="#{cart.order}"></button>
-</div>
+</main>
+<footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
 </body>
 </html>
