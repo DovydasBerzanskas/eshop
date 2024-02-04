@@ -2,6 +2,7 @@ package lt.codeacademy.eshop.cart;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import lt.codeacademy.eshop.cart.dto.CartDto;
 import lt.codeacademy.eshop.product.dto.ProductDto;
 import lt.codeacademy.eshop.product.service.ProductService;
 import org.springframework.stereotype.Controller;
@@ -21,8 +22,8 @@ public class CartController {
     private final ProductService productService;
 
     @ModelAttribute("cartSession")
-    public List<ProductDto> createDefaultCartSession() {
-        return new ArrayList<>();
+    public CartDto createDefaultCartSession() {
+        return new CartDto();
     }
 
     @GetMapping
@@ -31,7 +32,7 @@ public class CartController {
     }
 
     @PostMapping("/{productId}")
-    public String addToCart(@PathVariable UUID productId, @ModelAttribute("cartSession") List<ProductDto> cart) {
+    public String addToCart(@PathVariable UUID productId, @ModelAttribute("cartSession") CartDto cart) {
         final ProductDto productDto = productService.getProductByUUID(productId);
         cart.add(productDto);
 
