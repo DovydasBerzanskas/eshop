@@ -1,8 +1,9 @@
-package lt.codeacademy.eshop.cart;
+package lt.codeacademy.eshop.cart.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.eshop.cart.dto.CartDto;
+import lt.codeacademy.eshop.cart.service.CartService;
 import lt.codeacademy.eshop.product.dto.ProductDto;
 import lt.codeacademy.eshop.product.service.ProductService;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CartController {
 
-    private final ProductService productService;
+    private final CartService cartService;
 
     @ModelAttribute("cartSession")
     public CartDto createDefaultCartSession() {
@@ -33,8 +34,7 @@ public class CartController {
 
     @PostMapping("/{productId}")
     public String addToCart(@PathVariable UUID productId, @ModelAttribute("cartSession") CartDto cart) {
-        final ProductDto productDto = productService.getProductByUUID(productId);
-        cart.add(productDto);
+        cartService.addProductToCart(productId, cart);
 
         return "redirect:/products";
     }
