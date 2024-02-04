@@ -3,6 +3,7 @@ package lt.codeacademy.eshop.cart.dto;
 import lombok.Getter;
 import lt.codeacademy.eshop.product.dto.ProductDto;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,5 +17,17 @@ public class CartDto {
                 .productDto(productDto)
                 .quantity(1)
                 .build());
+    }
+
+    public BigDecimal getCartTotalPrice() {
+        return cartItems.stream()
+                .map(CartItemDto::getTotalItemPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public int getCartTotalQuantity() {
+        return cartItems.stream()
+                .map(CartItemDto::getQuantity)
+                .reduce(0, Integer::sum);
     }
 }
