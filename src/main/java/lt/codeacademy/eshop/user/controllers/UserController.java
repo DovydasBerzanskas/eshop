@@ -1,7 +1,7 @@
-package lt.codeacademy.eshop.product.controllers;
+package lt.codeacademy.eshop.user.controllers;
 
 import jakarta.validation.Valid;
-import lt.codeacademy.eshop.product.dto.UserDto;
+import lt.codeacademy.eshop.user.dto.UserDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,6 +27,6 @@ public class UserController {
         System.out.println("Registration request successful");
         System.out.println(userDto);
 
-        return "redirect:/user/create";
+        return "redirect:/users/create";
     }
 }

@@ -27,7 +27,7 @@
             <span th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" th:errorclass="form-error"></span>
         </div>
         <div class="mb-3 form-group">
-            <label for="categories" th:text="#{product.create.category} + '+'">Category</label>
+            <label for="categories" th:text="#{product.create.category} + ':'">Category</label>
             <div class="dropdown">
                 <select id="categories"
                         th:field="*{categoryId}"
