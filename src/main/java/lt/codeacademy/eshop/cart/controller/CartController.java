@@ -6,6 +6,7 @@ import lt.codeacademy.eshop.cart.service.CartService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.UUID;
 
@@ -35,7 +36,9 @@ public class CartController {
     }
 
     @PostMapping
-    public String order(SessionStatus sessionStatus) {
+    public String order(SessionStatus sessionStatus, RedirectAttributes redirectAttributes) {
+        sessionStatus.setComplete();
+
         sessionStatus.setComplete();
 
         return "redirect:/products";
