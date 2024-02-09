@@ -15,6 +15,12 @@ public class SecurityConfig {
         return http.authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/login/**").permitAll()
                 .anyRequest().authenticated())
-                .formLogin(loginConfigure -> loginConfigure.permitAll()).build();
+                .formLogin(loginConfigure -> loginConfigure.permitAll()
+                        .loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .defaultSuccessUrl("/products", true)
+                        .usernameParameter("loginEmail")
+                        .passwordParameter("loginPassword"))
+                .build();
     }
 }
