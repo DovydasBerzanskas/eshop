@@ -1,4 +1,4 @@
-package lt.codeacademy.eshop.filter;
+package lt.codeacademy.eshop.security.filter;
 
 import jakarta.servlet.*;
 import lombok.extern.log4j.Log4j2;
