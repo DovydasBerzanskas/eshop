@@ -25,6 +25,7 @@ spring:
     user:
       name: admin
       password: admin
+      filter: TRACE
 logging:
   level:
     lt:
