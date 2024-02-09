@@ -39,7 +39,7 @@ public class CartController {
     public String order(SessionStatus sessionStatus, RedirectAttributes redirectAttributes) {
         sessionStatus.setComplete();
 
-        sessionStatus.setComplete();
+        redirectAttributes.addAttribute("successMessage", "Order created successfully!")
 
         return "redirect:/products";
     }
