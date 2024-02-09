@@ -1,17 +1,12 @@
 package lt.codeacademy.eshop.cart.controller;
 
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.eshop.cart.dto.CartDto;
 import lt.codeacademy.eshop.cart.service.CartService;
-import lt.codeacademy.eshop.product.dto.ProductDto;
-import lt.codeacademy.eshop.product.service.ProductService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -38,4 +33,12 @@ public class CartController {
 
         return "redirect:/products";
     }
+
+    @PostMapping
+    public String order(SessionStatus sessionStatus) {
+        sessionStatus.setComplete();
+
+        return "redirect:/products";
+    }
+
 }
