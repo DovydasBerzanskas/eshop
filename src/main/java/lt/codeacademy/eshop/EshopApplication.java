@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class EshopApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EshopApplication.class, args);
+		SpringApplication app = new SpringApplication(EshopApplication.class);
+		app.setAdditionalProfiles("something");
+		app.run(args);
 	}
 
 }
