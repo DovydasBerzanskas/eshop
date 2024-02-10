@@ -3,6 +3,7 @@ package lt.codeacademy.eshop.product.controllers;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import lt.codeacademy.eshop.HttpEndpoints;
 import lt.codeacademy.eshop.helper.MessageService;
 import lt.codeacademy.eshop.product.dto.ProductCategoryDto;
@@ -25,26 +26,17 @@ import java.util.Set;
 import java.util.UUID;
 
 @Controller
-@Log4j2
+@Slf4j
 @RequiredArgsConstructor
-@PropertySource("classpath:myeshop.properties")
 public class ProductController {
 
     private final ProductService productService;
     private final ProductCategoryService productCategoryService;
     private final MessageService messageService;
 
-    @Value("${company.name}")
-    private String companyName;
-    @Value("{developer.name}")
-    private String developerName;
-
     @GetMapping(HttpEndpoints.PRODUCTS_CREATE)
     public String getFormForCreate(Model model, String message) {
         Set<ProductCategoryDto> categories = productCategoryService.getCategories();
-
-        model.addAttribute("companyName", companyName);
-        model.addAttribute("developerName", developerName);
 
         model.addAttribute("categoriesDto", categories);
         model.addAttribute("productDto", ProductDto.builder().build());
@@ -55,7 +47,7 @@ public class ProductController {
 
     @GetMapping(HttpEndpoints.PRODUCTS_UPDATE)
     public String getFormForUpdate(Model model, @PathVariable UUID productId) {
-        log.atInfo().log("-=== GET PRODUCT ON UPDATE ===-");
+        log.atInfo().log("Got request for GET /products/{}/update", productId);
         model.addAttribute("productDto", productService.getProductByUUID(productId));
 
         return "product/product";
