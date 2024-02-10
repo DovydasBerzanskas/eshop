@@ -15,11 +15,16 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-            .authorizeHttpRequests(authorize -> authorize
-            .requestMatchers("/login/**").permitAll()
-            .anyRequest()
-            .authenticated())
-            .formLogin(loginConfigure -> loginConfigure.permitAll()
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(
+                                "/",
+                                "/products",
+                                "/cart/**",
+                                "/users/**"
+                        ).permitAll()
+                        .anyRequest()
+                        .authenticated())
+                .formLogin(loginConfigure -> loginConfigure.permitAll()
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/products", true)
