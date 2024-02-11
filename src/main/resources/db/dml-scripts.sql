@@ -24,8 +24,8 @@ VALUES (1, 2),
        (2, 1);
 
 INSERT INTO users(name, surname, email, password, zip_code, phone_number)
-    VALUES ('Admin', 'Admin', 'admin@eshop.lt', '$2a$10$RaoyLY5ZVehcXsqk65jKcexHb/LLXkvjQfILcF/oo8lPJBjeO001m', 'LT-0001', 'N/A');
-            ('User', 'User', 'user@eshop.lt', '$2a$10$RaoyLY5ZVehcXsqk65jKcexHb/LLXkvjQfILcF/oo8lPJBjeO001m', 'LT-0002', 'N/A');
+    VALUES ('Admin', 'Admin', 'admin@eshop.lt', '$2a$10$RaoyLY5ZVehcXsqk65jKcexHb/LLXkvjQfILcF/oo8lPJBjeO001m', 'LT-0001', '+37061234567');
+            ('User', 'User', 'user@eshop.lt', '$2a$10$RaoyLY5ZVehcXsqk65jKcexHb/LLXkvjQfILcF/oo8lPJBjeO001m', 'LT-0002', '+37061234568');
 
 INSERT INTO authority(name, description)
 VALUES ('ADMIN', NULL),
