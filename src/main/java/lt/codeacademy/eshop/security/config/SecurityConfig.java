@@ -1,5 +1,6 @@
 package lt.codeacademy.eshop.security.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,12 +14,18 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
 @Profile("!unsecure")
+@RequiredArgsConstructor
 public class SecurityConfig {
+
+    private final DataSource dataSource;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -66,5 +73,14 @@ public class SecurityConfig {
         System.out.println(userUser.getPassword());
 
         return new InMemoryUserDetailsManager(adminUser, userUser);
+    }
+
+    @Bean
+    public UserDetailsService jdbcUserDetailsService() {
+        final JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
+        users.setUsersByUsernameQuery("select email AS username, password, TRUE as enabled FROM users WHERE email = ?");
+        users.setAuthoritiesByUsernameQuery("select email AS username, 'ROLE_ADMIN' AS authority FROM users WHERE email = ?");
+
+        return users;
     }
 }

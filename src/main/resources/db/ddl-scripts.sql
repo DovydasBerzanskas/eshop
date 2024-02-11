@@ -22,3 +22,31 @@ CREATE TABLE PRODUCT_PRODUCT_CATEGORIES
     product_id            BIGINT NOT NULL,
     product_categories_id BIGINT NOT NULL
 );
+
+DROP TABLE IF EXISTS users_authorities;
+DROP TABLE IF EXISTS authority;
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users
+(
+    id           BIGINT primary key auto_increment,
+    name         VARCHAR(20)  NOT NULL,
+    surname      VARCHAR(50)  NOT NULL,
+    email        VARCHAR(100) NOT NULL,
+    password     VARCHAR(500) NOT NULL,
+    zip_code     VARCHAR(10)  NOT NULL,
+    phone_number VARCHAR(12)  NOT NULL
+);
+
+CREATE TABLE authority
+(
+    id          BIGINT primary key auto_increment,
+    name        VARCHAR(100) NOT NULL,
+    description VARCHAR(2000)
+);
+
+CREATE TABLE users_authorities
+(
+    user_id      BIGINT,
+    authority_id BIGINT
+);
