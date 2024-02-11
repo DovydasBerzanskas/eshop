@@ -51,7 +51,7 @@ CREATE TABLE authority
 CREATE TABLE users_authorities
 (
     user_id      BIGINT,
-    authority_id BIGINT,
+    authorities_id BIGINT,
     CONSTRAINT users_authorities_key UNIQUE (user_id, authorities_id),
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (authorities_id) REFERENCES authority(id)

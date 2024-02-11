@@ -1,6 +1,6 @@
 INSERT INTO PRODUCT(PRODUCT_ID, NAME, PRICE, AMOUNT)
-VALUES ('260f7043-d0bf-4d99-b143-6ee555685561', 'Limes', 48.0, 79),   -- id: 1
-       ('260f7043-d0bf-4d99-b143-6ee555685560', 'Samsung', 222.0, 3), -- id: 2
+VALUES ('260f7043-d0bf-4d99-b143-6ee555685561', 'Limes', 48.0, 79),
+       ('260f7043-d0bf-4d99-b143-6ee555685560', 'Samsung', 222.0, 3),
        ('260f7043-d0bf-4d99-b143-6ee555685562', 'Passion fruit', 58.0, 3),
        ('260f7043-d0bf-4d99-b143-6ee555685563', 'Mulberries', 41.0, 77),
        ('260f7043-d0bf-4d99-b143-6ee555685564', 'Cumquat', 63.0, 69),
@@ -24,7 +24,7 @@ VALUES (1, 2),
        (2, 1);
 
 INSERT INTO users(name, surname, email, password, zip_code, phone_number)
-    VALUES ('Admin', 'Admin', 'admin@eshop.lt', '$2a$10$RaoyLY5ZVehcXsqk65jKcexHb/LLXkvjQfILcF/oo8lPJBjeO001m', 'LT-0001', '+37061234567');
+    VALUES ('Admin', 'Admin', 'admin@eshop.lt', '$2a$10$RaoyLY5ZVehcXsqk65jKcexHb/LLXkvjQfILcF/oo8lPJBjeO001m', 'LT-0001', '+37061234567'),
             ('User', 'User', 'user@eshop.lt', '$2a$10$RaoyLY5ZVehcXsqk65jKcexHb/LLXkvjQfILcF/oo8lPJBjeO001m', 'LT-0002', '+37061234568');
 
 INSERT INTO authority(name, description)
