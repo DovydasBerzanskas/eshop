@@ -51,7 +51,7 @@ public class SecurityConfig {
     public UserDetailsService inMemoryUserDetailsService() {
         final UserDetails adminUser = User.builder()
                 .username("admin@eshop.lt")
-                .password("{noop}admin")
+                .password("{bcrypt}$2a$10$yb/Ifk.5rSGR733.HGIAXOCdXTwoK2.HeGCYnlGFbxbB40j9Yn5ga")
                 .roles("ADMIN", "USER")
                 .build();
         final UserDetails userUser = User.builder()
