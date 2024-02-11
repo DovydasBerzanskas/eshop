@@ -17,6 +17,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,6 +35,7 @@ public class ProductController {
     private final ProductCategoryService productCategoryService;
     private final MessageService messageService;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(HttpEndpoints.PRODUCTS_CREATE)
     public String getFormForCreate(Model model, String message) {
         Set<ProductCategoryDto> categories = productCategoryService.getCategories();
@@ -45,6 +47,7 @@ public class ProductController {
         return "product/product";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(HttpEndpoints.PRODUCTS_UPDATE)
     public String getFormForUpdate(Model model, @PathVariable UUID productId) {
         log.atInfo().log("Got request for GET /products/{}/update", productId);
@@ -53,6 +56,7 @@ public class ProductController {
         return "product/product";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/products/create")
     public String createAProduct(Model model, @Valid ProductDto product, BindingResult errors) {
         if (errors.hasErrors()) {
@@ -64,6 +68,7 @@ public class ProductController {
         return "redirect:/products/create?message=product.create.message.success";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(HttpEndpoints.PRODUCTS_UPDATE)
     public String updateProduct(Model model, Pageable pageable, ProductDto productDto, @PathVariable UUID productId) {
         productService.updateProduct(productDto);
@@ -80,6 +85,7 @@ public class ProductController {
         return "product/products";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(HttpEndpoints.PRODUCTS_DELETE)
     public String deleteProduct(Model model, Pageable pageable, @PathVariable UUID productId) {
         productService.deleteProductByUUID(productId);
