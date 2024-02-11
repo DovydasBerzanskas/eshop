@@ -1,6 +1,4 @@
 spring:
-  profiles:
-    active: unsecure
   main:
     banner-mode: console
   h2:
@@ -22,11 +20,6 @@ spring:
     properties:
       hibernate:
         format_sql: true
-  security:
-    user:
-      name: admin@eshop.lt
-      password: admin
-      filter: TRACE
 logging:
   level:
     lt:
@@ -34,6 +27,7 @@ logging:
         eshop:
           config: DEBUG
           product: INFO
+          filter: TRACE
 server:
   error:
     whitelabel:
