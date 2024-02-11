@@ -7,10 +7,11 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -49,9 +50,11 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService inMemoryUserDetailsService() {
+        final PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+
         final UserDetails adminUser = User.builder()
                 .username("admin@eshop.lt")
-                .password("{bcrypt}$2a$10$yb/Ifk.5rSGR733.HGIAXOCdXTwoK2.HeGCYnlGFbxbB40j9Yn5ga")
+                .password(encoder.encode("admin"))
                 .roles("ADMIN", "USER")
                 .build();
         final UserDetails userUser = User.builder()
@@ -59,6 +62,8 @@ public class SecurityConfig {
                 .password("{noop}user")
                 .roles("USER")
                 .build();
+        System.out.println(adminUser.getPassword());
+        System.out.println(userUser.getPassword());
 
         return new InMemoryUserDetailsManager(adminUser, userUser);
     }
