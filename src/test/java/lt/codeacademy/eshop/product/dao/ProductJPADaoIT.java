@@ -29,7 +29,7 @@ public class ProductJPADaoIT {
         var product = Product.builder()
                 .productCategories(new HashSet<>())
                 .name("banana")
-                .price(BigDecimal.valueOf(3))
+                .price(BigDecimal.valueOf(0))
                 .amount(1)
                 .build();
 
@@ -42,7 +42,7 @@ public class ProductJPADaoIT {
         assertEquals(savedProduct.getName(), product.getName());
         assertEquals(savedProduct.getAmount(), product.getAmount());
         assertEquals(savedProduct.getPrice(), product.getPrice());
-        assertEquals(savedProduct.getProductId());
+        assertNotNull(savedProduct.getProductId());
     }
 
     @Test
@@ -53,7 +53,7 @@ public class ProductJPADaoIT {
         var product = Product.builder()
                 .productCategories(new HashSet<>())
                 .name("banana")
-                .price(BigDecimal.valueOf(3))
+                .price(BigDecimal.valueOf(0))
                 .productId(uuid)
                 .amount(1)
                 .build();
@@ -67,7 +67,7 @@ public class ProductJPADaoIT {
         assertEquals(savedProduct.getName(), product.getName());
         assertEquals(savedProduct.getAmount(), product.getAmount());
         assertEquals(savedProduct.getPrice(), product.getPrice());
-        assertEquals(savedProduct.getId() > 0);
+        assertTrue(savedProduct.getId() > 0);
     }
 
 }
