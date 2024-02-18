@@ -25,6 +25,8 @@ public class ProductJPADaoTest {
                 .amount(1)
                 .build();
 
+        when(repository.findByProductId(any(UUID.class))).thenReturn(Optional.of(product));
+
         productDao.save(product);
 
         assertNotNull(product.getProductId());

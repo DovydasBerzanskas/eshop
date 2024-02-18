@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface ProductDao {
 
-    void save(Product product);
+    Product save(Product product);
 
     void update(Product product);
 
