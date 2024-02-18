@@ -1,12 +1,12 @@
 package lt.codeacademy.eshop.product.service;
 
-import lt.codeacademy.eshop.fakes.FakeProductDao;
-import lt.codeacademy.eshop.product.dao.ProductCategoryRepository;
-import lt.codeacademy.eshop.product.dao.ProductDao;
-import lt.codeacademy.eshop.product.dto.ProductDto;
-import lt.codeacademy.eshop.product.mappers.ProductMapper;
-import lt.codeacademy.eshop.product.pojo.Product;
-import lt.codeacademy.eshop.product.pojo.ProductCategory;
+import lt.codeacademy.eshop.common.product.service.ProductService;
+import lt.codeacademy.eshop.jpa.repositories.ProductCategoryRepository;
+import lt.codeacademy.eshop.common.product.dao.ProductDao;
+import lt.codeacademy.eshop.common.product.dto.ProductDto;
+import lt.codeacademy.eshop.common.product.mappers.ProductMapper;
+import lt.codeacademy.eshop.jpa.entities.Product;
+import lt.codeacademy.eshop.jpa.entities.ProductCategory;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

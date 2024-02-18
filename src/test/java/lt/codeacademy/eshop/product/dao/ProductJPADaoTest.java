@@ -1,6 +1,8 @@
 package lt.codeacademy.eshop.product.dao;
 
-import lt.codeacademy.eshop.product.pojo.Product;
+import lt.codeacademy.eshop.common.product.dao.ProductJPADao;
+import lt.codeacademy.eshop.jpa.entities.Product;
+import lt.codeacademy.eshop.jpa.repositories.ProductRepository;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

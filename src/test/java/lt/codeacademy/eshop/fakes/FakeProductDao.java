@@ -1,7 +1,7 @@
 package lt.codeacademy.eshop.fakes;
 
-import lt.codeacademy.eshop.product.dao.ProductDao;
-import lt.codeacademy.eshop.product.pojo.Product;
+import lt.codeacademy.eshop.common.product.dao.ProductDao;
+import lt.codeacademy.eshop.jpa.entities.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
