@@ -22,7 +22,7 @@
             <tr>
                 <th class="col-md-auto">
                     <a th:with="directionVariable=${productList.sort.getOrderFor('name')?.direction}"
-                       th:href="@{/products(page=${productList.getPageable().getPageNumber()},sort='name,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
+                       th:href="@{/products/list(page=${productList.getPageable().getPageNumber()},sort='name,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
                         <i th:class="'fa ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
                            th:if="${productList.sort.getOrderFor('name') ne null}"></i>
                         <span th:text="#{products.field.name}">Name</span>
@@ -30,7 +30,7 @@
                 </th>
                 <th class="col-md-2">
                     <a th:with="directionVariable=${productList.sort.getOrderFor('price')?.direction}"
-                       th:href="@{/products(page=${productList.getPageable().getPageNumber()},sort='price,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
+                       th:href="@{/products/list(page=${productList.getPageable().getPageNumber()},sort='price,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
                         <i th:class="'fa ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
                            th:if="${productList.sort.getOrderFor('price') ne null}"></i>
                         <span th:text="#{products.field.price} + ' (' + ${modelCurrencyAttr} + ')'">Price</span>
@@ -38,7 +38,7 @@
                 </th>
                 <th class="col-md-2">
                     <a th:with="directionVariable=${productList.sort.getOrderFor('amount')?.direction}"
-                       th:href="@{/products(page=${productList.getPageable().getPageNumber()},sort='amount,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
+                       th:href="@{/products/list(page=${productList.getPageable().getPageNumber()},sort='amount,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
                         <i th:class="'fa ' + ${directionVariable?.name eq 'ASC' ? 'fa-chevron-up' : 'fa-chevron-down'}"
                            th:if="${productList.sort.getOrderFor('amount') ne null}"></i>
                         <span th:text="#{products.field.amount}">Amount</span>
@@ -49,7 +49,7 @@
             </thead>
             <tbody>
             <tr th:each="product: ${productList}">
-                <td><a th:href="@{/products/{productId}/update(productId=${product.productId})}"
+                <td><a th:href="@{/products/list/{productId}/update(productId=${product.productId})}"
                        th:text="${product.name}"></a></td>
                 <td th:text="${product.price}">a</td>
                 <td th:text="${product.amount}">a</td>
@@ -82,7 +82,7 @@
                         class="page-item"
                         th:classappend="${!productList.hasPrevious() ? 'disabled' : ''}"
                 >
-                    <a class="page-link" th:href="@{/products(page=${productList.number} - 1,sort=${sortVariable})}"
+                    <a class="page-link" th:href="@{/products/list(page=${productList.number} - 1,sort=${sortVariable})}"
                        th:text="#{products.previous}">Previous</a>
                 </li>
 
@@ -90,7 +90,7 @@
                     th:each="pageNumber: ${#numbers.sequence(0, productList.totalPages - 1)}"
                     th:classappend="${pageNumber == productList.number ? 'active' : ''}"
                 >
-                    <a class="page-link" th:href="@{/products(page=${pageNumber},sort=${sortVariable})}"
+                    <a class="page-link" th:href="@{/products/list(page=${pageNumber},sort=${sortVariable})}"
                        th:text="${pageNumber + 1}"></a>
                 </li>
                 <li

@@ -37,13 +37,6 @@ public class ProductController {
     private final ProductCategoryService productCategoryService;
     private final MessageService messageService;
 
-    @ResponseBody
-    @GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<ProductDto> getAllProducts() {
-        return productService.getAllProductsPage(Pageable.ofSize(100))
-                .stream().toList();
-    }
-
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(HttpEndpoints.PRODUCTS_CREATE)
     public String getFormForCreate(Model model, String message) {
@@ -85,7 +78,7 @@ public class ProductController {
         return getProducts(model, pageable);
     }
 
-    @GetMapping("/products/old")
+    @GetMapping("/products/list")
     public String getProducts(Model model, @PageableDefault(size = 5, sort = {"price"}, direction = Sort.Direction.ASC)
     Pageable pageable) {
         final Page<ProductDto> allProducts = productService.getAllProductsPage(pageable);
