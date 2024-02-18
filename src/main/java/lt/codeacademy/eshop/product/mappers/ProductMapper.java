@@ -18,7 +18,7 @@ public class ProductMapper implements Mapper<Product, ProductDto> {
                 .productId(product.getProductId())
                 .name(product.getName())
                 .price(product.getPrice())
-                .categoryId(product.getProductCategories().stream().map(ProductCategory::getId).collect(Collectors.toList()))
+                .categoryIds(product.getProductCategories().stream().map(ProductCategory::getId).collect(Collectors.toList()))
                 .amount(product.getAmount())
                 .build();
     }

@@ -25,5 +25,5 @@ public class ProductDto {
     @NotNull
     private int amount;
     @NotNull
-    private List<Long> categoryId;
+    private List<Long> categoryIds;
 }
