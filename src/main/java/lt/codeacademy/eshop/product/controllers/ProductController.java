@@ -17,12 +17,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -34,6 +36,13 @@ public class ProductController {
     private final ProductService productService;
     private final ProductCategoryService productCategoryService;
     private final MessageService messageService;
+
+    @ResponseBody
+    @GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<ProductDto> getAllProducts() {
+        return productService.getAllProductsPage(Pageable.ofSize(100))
+                .stream().toList();
+    }
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(HttpEndpoints.PRODUCTS_CREATE)
@@ -76,7 +85,7 @@ public class ProductController {
         return getProducts(model, pageable);
     }
 
-    @GetMapping(HttpEndpoints.PRODUCTS)
+    @GetMapping("/products/old")
     public String getProducts(Model model, @PageableDefault(size = 5, sort = {"price"}, direction = Sort.Direction.ASC)
     Pageable pageable) {
         final Page<ProductDto> allProducts = productService.getAllProductsPage(pageable);
