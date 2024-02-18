@@ -32,7 +32,7 @@ public class CartController {
     public String addToCart(@PathVariable UUID productId, @ModelAttribute("cartSession") CartDto cart) {
         cartService.addProductToCartByProductId(productId, cart);
 
-        return "redirect:/products";
+        return "redirect:/products/list";
     }
 
     @PostMapping
@@ -41,7 +41,7 @@ public class CartController {
 
         redirectAttributes.addFlashAttribute("successMessageFlashAttr", "Order created successfully!");
 
-        return "redirect:/products";
+        return "redirect:/products/list";
     }
 
 }
