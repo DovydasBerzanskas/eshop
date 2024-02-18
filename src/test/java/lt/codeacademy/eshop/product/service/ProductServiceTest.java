@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -41,7 +42,7 @@ public class ProductServiceTest {
         var productUUID = UUID.randomUUID();
         var categoryId = 123L;
 
-        var productDto = new ProductDto(productUUID, "strawberry", BigDecimal.valueOf(1.95), 1, categoryId);
+        var productDto = new ProductDto(productUUID, "strawberry", BigDecimal.valueOf(1.95), 1, List.of(categoryId));
         var product = new Product();
 
         when(productCategoryRepository.getReferenceById(any())).thenReturn(new ProductCategory());
