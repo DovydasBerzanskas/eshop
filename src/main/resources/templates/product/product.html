@@ -5,7 +5,7 @@
 <nav th:replace="~{fragments/layout :: nav('products/create')}">placeholder</nav>
 <main class="container">
     <h3 th:text="#{product.create.title}">Lets create a product:</h3>
-    <div th:if="${message ne null AND message.length > 0}"
+    <div th:if="${message ne null && message.length > 0}"
          class="alert alert-success" role="alert"
          th:text="${message}">
         Success message when add product
@@ -30,7 +30,7 @@
             <label for="categories" th:text="#{product.create.category} + ':'">Category</label>
             <div class="dropdown">
                 <select id="categories"
-                        th:field="*{categoryId}"
+                        th:field="*{categoryIds}"
                         class="form-select" aria-label="Default select example">
                     <option th:each="category: ${categoriesDto}"
                             th:value="${category.id}"

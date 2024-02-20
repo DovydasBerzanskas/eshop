@@ -58,7 +58,7 @@ public class ProductController {
         if (errors.hasErrors()) {
             return "product/product";
         }
-
+        product.setProductId(UUID.randomUUID());
         productService.saveProduct(product);
 
         return "redirect:/products/create?message=product.create.message.success";
