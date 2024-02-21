@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS PRODUCT_CATEGORY;
 CREATE TABLE PRODUCT_CATEGORY
 (
     id   BIGINT primary key auto_increment,
-    name varchar(20) NOT NULL
+    name varchar(40) NOT NULL
 );
 
 CREATE TABLE PRODUCT

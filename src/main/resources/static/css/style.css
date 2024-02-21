@@ -1,15 +1,18 @@
 body {
-    background-color: #434453;
-    color: white;
+    background-color: #222831;
+    color: #EEEEEE;
     min-height: 100vh;
     font-size: calc(6px + 2vmin);
 }
 
 body.login {
-    color: #212529;
+    color: #222831;
 }
 
 .form-error {
     color: red;
 }
 
+.nav-link {
+    color: #EEEEEE !important;
+}
