@@ -27,4 +27,7 @@ public class ProductDto {
     private int amount;
     @NotNull
     private List<Long> categoryIds;
+    @NotNull
+    private String description;
+    private String image;
 }

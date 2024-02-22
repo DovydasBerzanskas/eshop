@@ -15,4 +15,21 @@ body.login {
 
 .nav-link {
     color: #EEEEEE !important;
+    border: 2px #EEEEEE;
+}
+
+.eshop-nav {
+    background-color: #393E46;
+    color: #dd4b39;
+}
+
+.eshop-pagination {
+    background-color: #393E46;
+    border: none;
+    color: #EEEEEE;
+}
+
+.image-style {
+    width: 1080px;
+    height: 480px;
 }

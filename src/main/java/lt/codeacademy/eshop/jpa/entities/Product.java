@@ -30,6 +30,8 @@ public class Product {
     private String name;
     private BigDecimal price;
     private int amount;
+    private String description;
+    private String image;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     private Set<ProductCategory> productCategories = new HashSet<>();

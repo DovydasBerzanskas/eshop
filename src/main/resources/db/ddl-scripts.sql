@@ -10,11 +10,13 @@ CREATE TABLE PRODUCT_CATEGORY
 
 CREATE TABLE PRODUCT
 (
-    id         BIGINT primary key auto_increment,
-    product_id UUID           NOT NULL,
-    name       varchar(60)    NOT NULL,
-    price      decimal(20, 2) NOT NULL,
-    amount     int            NOT NULL
+    id          BIGINT primary key auto_increment,
+    product_id  UUID           NOT NULL,
+    name        varchar(60)    NOT NULL,
+    price       decimal(20, 2) NOT NULL,
+    amount      int            NOT NULL,
+    description varchar(500)   NOT NULL,
+    image       varchar(50)    NOT NULL
 );
 
 CREATE TABLE PRODUCT_PRODUCT_CATEGORIES
@@ -50,9 +52,9 @@ CREATE TABLE authority
 
 CREATE TABLE users_authorities
 (
-    user_id      BIGINT,
+    user_id        BIGINT,
     authorities_id BIGINT,
     CONSTRAINT users_authorities_key UNIQUE (user_id, authorities_id),
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (authorities_id) REFERENCES authority(id)
+    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (authorities_id) REFERENCES authority (id)
 );

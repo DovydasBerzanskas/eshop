@@ -88,4 +88,13 @@ public class ProductController {
 
         return getProducts(model, pageable);
     }
+
+    @GetMapping(HttpEndpoints.PRODUCTS_GET)
+    public String getById(Model model, @PathVariable UUID productId) {
+        var product = productService.getProductByUUID(productId);
+        model.addAttribute("product", product);
+
+        return "product/productpage";
+    }
+
 }
