@@ -31,7 +31,6 @@ public class CartController {
     @PostMapping("/{productId}")
     public String addToCart(@PathVariable UUID productId, @ModelAttribute("cartSession") CartDto cart) {
         cartService.addProductToCartByProductId(productId, cart);
-
         return "redirect:/products/list";
     }
 

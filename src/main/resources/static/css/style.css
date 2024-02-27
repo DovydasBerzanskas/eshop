@@ -29,7 +29,44 @@ body.login {
     color: #EEEEEE;
 }
 
-.image-style {
-    width: 1080px;
-    height: 480px;
+.product-image-style {
+    width: 200px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    flex: 0 0 auto;
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-description-style {
+    margin-left: 20px; /* Adjust as needed */
+}
+
+.product-action {
+    margin-top: 10px;
+}
+
+.cart-button {
+    width: 200px;
+    height: 30px;
+    font-size: 16px; /* Adjust as needed */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-page {
+    margin-top: 100px;
+    margin-left: 400px;
+    margin-right: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
 }

@@ -3,10 +3,24 @@
 <head th:replace="~{fragments/layout :: head(#{productpage.head})}"></head>
 <body>
 <nav th:replace="~{fragments/layout :: nav('productpage')}">placeholder</nav>
-<main>
-    <h1 th:text="${product.name}"></h1>
-<p th:text="${product.description}">Default</p>
-    <img class="image-style" th:src="@{/images/products/{img}(img=${product.image})}">
+<main class="product-page">
+    <div class="content-wrapper">
+        <div class="product-image-style">
+            <img class="product-image" th:src="@{/images/products/{img}(img=${product.image})}" alt="Product Image">
+        </div>
+        <div class="product-details">
+            <div class="product-description-style">
+                <h1 th:text="${product.name}"></h1>
+                <p th:text="${product.description}">Default</p>
+            </div>
+            <div class="product-action">
+                <p class="product-price" th:text="${product.price} + ' €'">Default</p>
+                <form method="POST" th:action="@{/cart/{productId}(productId=${product.productId})}">
+                    <button type="btn btn-primary" class="btn btn-light cart-button">ADD TO CART</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </main>
 <footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
 </body>

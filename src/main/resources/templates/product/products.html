@@ -56,14 +56,14 @@
                        th:text="${product.name}"></a></td>
                 <td th:text="${product.price}">a</td>
                 <td th:text="${product.amount}">a</td>
-                <div sec:authorize="hasRole('ADMIN')">
+                <div>
                     <td class="d-flex gap-2">
                         <form method="POST" th:action="@{/cart/{productId}(productId=${product.productId})}">
                             <button class="btn btn-primary" style="background-color: #00ADB5">
                                 <i class="fa-solid fa-cart-plus"></i>
                             </button>
                         </form>
-                        <a
+                        <a sec:authorize="hasRole('ADMIN')"
                                 th:href="@{/products/{productId}/delete(productId=${product.productId})}"
                                 th:text="#{products.delete}"
                                 class="btn btn-danger">Delete</a></td>
