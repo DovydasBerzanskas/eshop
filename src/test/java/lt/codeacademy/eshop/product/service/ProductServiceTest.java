@@ -42,7 +42,7 @@ public class ProductServiceTest {
         var productUUID = UUID.randomUUID();
         var categoryId = 123L;
 
-        var productDto = new ProductDto(productUUID, "strawberry", BigDecimal.valueOf(1.95), 1, List.of(categoryId));
+        var productDto = new ProductDto(productUUID, "Meta Quest 2", BigDecimal.valueOf(1.95), 1, List.of(categoryId), "description", null);
         var product = new Product();
 
         when(productCategoryRepository.getReferenceById(any())).thenReturn(new ProductCategory());
