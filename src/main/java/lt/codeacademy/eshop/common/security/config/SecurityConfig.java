@@ -35,6 +35,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(
                                 "/",
+                                "/*.png",    // Temporary solution
                                 "/products/**",
                                 "/cart/**",
                                 "/users/**",

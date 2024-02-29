@@ -16,10 +16,9 @@ VALUES ('260f7043-d0bf-4d99-b143-6ee555685561', 'Meta Quest 2', 299.99, 1000, 'E
 
 insert into PRODUCT_CATEGORY(NAME)
 VALUES ('VR/AR Headset'),
-       ('Haptic devices'),
-       ('Face cushions'),
-       ('Headstraps'),
-       ('Headstrapsasd');
+       ('Haptic device'),
+       ('Face cushion'),
+       ('Headstrap');
 
 insert into PRODUCT_PRODUCT_CATEGORIES(product_id, product_categories_id)
 VALUES (1, 2),
